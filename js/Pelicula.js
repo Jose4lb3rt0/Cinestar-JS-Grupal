@@ -1,7 +1,7 @@
 const getPelicula = async() =>{
     let id = new URLSearchParams(window.location.search).get('id');
     const data = await fetch(`https://oaemdl.es/cinestar_sweb_php/peliculas/${id}`);
-
+    if(data.status == 200){
     const pelicula = await data.json();
 
     let html = `
@@ -42,4 +42,5 @@ const getPelicula = async() =>{
     `
 
     document.getElementById("contenido-interno").innerHTML = html;
+    }
 }
