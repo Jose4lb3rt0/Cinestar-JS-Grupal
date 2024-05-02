@@ -4,14 +4,14 @@ if (data.status == 200){
     const cines = await data.json()
     let html = `<br/><h1>Nuestros Cines</h1><br/>`
 
-cines.forEach(Cine => {
-    html +-`
+cines.forEach(cine => {
+    html +=`
     
 		<div class="contenido-cine">
-	        	    <img src="img/cine/1.1.jpg" width="227" height="170"/>
+	        	    <img src="img/cine/${cine.id}.1.jpg" width="227" height="170"/>
             	   	<div class="datos-cine">
-       				   	<h4>Excelsior</h4><br/>
-                		<span>Jirón de la Unión 780 - Lima<br/><br/>Teléfono: 714-1865 anexo 865</span>
+       				   	<h4>${cine.RazonSocial}</h4><br/>
+                		<span>${cine.Direccion} - ${cine.Detalles}<br/><br/>Teléfono: 714-1865 anexo 865</span>
                 	</div>
                 	<br/>
                 	<a href="http://www.cinestar.com.pe/multicines/cine/Cinestar-Excelsior">
@@ -20,6 +20,7 @@ cines.forEach(Cine => {
 				</div>
                 `
         });
+		document.getElementById('contenido-interno').innerHTML = html
     }
 
 }
