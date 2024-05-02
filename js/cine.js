@@ -10,9 +10,9 @@ const getCine = async() =>{
         const peliculas = await data2.json();
     
     let htmlTarifas = '';
-    tarifas.forEach(tarifa => {
+    tarifas.forEach((tarifa, index) => {
         htmlTarifas += `
-        <div class="fila">
+        <div class="fila ${index % 2 === 0 ? '' : 'impar'}">
             <div class="celda-titulo">${tarifa.DiasSemana}</div>
             <div class="celda">${tarifa.Precio}</div>
         </div>
@@ -20,9 +20,9 @@ const getCine = async() =>{
     });
 
     let htmlPeliculas = '';
-    peliculas.forEach(pelicula =>{
+    peliculas.forEach((pelicula, index) =>{
         htmlPeliculas += `
-        <div class="fila">
+        <div class="fila ${index % 2 === 0 ? '' : 'impar'}">
             <div class="celda-titulo">${pelicula.Titulo}</div>
             <div class="celda">${pelicula.Horarios}</div>
         </div>
@@ -49,7 +49,11 @@ const getCine = async() =>{
             <br/><br/><h4>Los horarios de cada función están sujetos a cambios sin previo aviso.</h4><br/>
             <div class="cine-info peliculas">
                 <div class="tabla">
-                    
+                <div class="fila">
+                    <div class="celda-cabecera">Peliculas</div>
+                    <div class="celda-cabecera">Horarios</div>
+                </div>
+
                 ${htmlPeliculas}
 
                 </div>
