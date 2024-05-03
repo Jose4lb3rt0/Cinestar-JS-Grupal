@@ -6,6 +6,7 @@
     const peliculas = await data.json()
     let html = '<br><h1>Cartelera</h1></br>'
 
+	
     peliculas.forEach(pelicula => {
         html +=`
         
@@ -28,6 +29,7 @@
 					<img src="img/pelicula/${pelicula.id}.jpg" width="160" height="226"/><br/><br/>
         `
         
+
     });
     document.getElementById('contenido-interno').innerHTML = html
     }
